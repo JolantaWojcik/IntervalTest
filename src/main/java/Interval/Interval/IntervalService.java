@@ -4,6 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import javax.swing.JOptionPane;
 
 public class IntervalService {
@@ -56,6 +60,15 @@ public class IntervalService {
 			return differenceInyears;
 	}
 	
+	public Map safeMap(int interval){
+		//ConcurrentHashMap Example Code
+		
+		 Map safeMap = new ConcurrentHashMap<String, Integer>();
+		 safeMap.put(Long.toHexString(Double.doubleToLongBits(Math.random())), interval);
+		 
+		 return safeMap;
+	}
+	
 	private boolean isDayInMonthNotPassed(GivenDate start, GivenDate end) {
 		return start.getMonth() == end.getMonth() && start.getDate() < end.getDate();
 	}
@@ -89,5 +102,4 @@ public class IntervalService {
 			return date;
 		}
 	}
-   
 }
